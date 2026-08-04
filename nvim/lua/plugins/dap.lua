@@ -188,6 +188,15 @@ return {
         "debugpy",          -- Python
         "js-debug-adapter", -- JS / TS
       })
+      local unique = {}
+      local dedup = {}
+      for _, tool in ipairs(opts.ensure_installed) do
+        if not unique[tool] then
+          unique[tool] = true
+          table.insert(dedup, tool)
+        end
+      end
+      opts.ensure_installed = dedup
     end,
   },
 }
