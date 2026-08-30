@@ -8,3 +8,7 @@ vim.g.border = "single"
 vim.diagnostic.config({
   float = { border = "single" },
 })
+
+-- Use zsh for Neovim built-in terminal
+vim.opt.shell = "zsh"
+
