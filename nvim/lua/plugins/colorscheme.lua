@@ -1,24 +1,29 @@
 return {
-  -- Ayu Dark colorscheme with sleek dark matte background
+  -- Catppuccin Mocha with transparent background
   {
-    "Shatur/neovim-ayu",
-    name = "ayu",
+    "catppuccin/nvim",
+    name = "catppuccin",
     lazy = false,
     priority = 1000,
     opts = {
-      mirage = false, -- false for classic Ayu Dark matte background
-      overrides = {},
+      flavour = "mocha",
+      transparent_background = true,
+      float = { transparent = true, solid = false },
+      term_colors = true,
+      integrations = {
+        blink_cmp = true,
+        neotree = true,
+        snacks = true,
+        which_key = true,
+        noice = true,
+        telescope = { enabled = true },
+      },
     },
-    config = function(_, opts)
-      local ayu = require("ayu")
-      ayu.setup(opts)
-      ayu.colorscheme()
-    end,
   },
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "ayu-dark",
+      colorscheme = "catppuccin-mocha",
     },
   },
 }
