@@ -18,20 +18,10 @@ Rather than holding project-specific build artifacts, this repository maintains 
 
 ## 🖥️ Environment Stack & Features
 
-### 1. ZShell (`.zshrc`)
-* **Prompt & Theme**: Integrated with [Starship](https://starship.rs/) prompt for fast, informative, and minimal shell rendering (`starship init zsh`).
-* **Framework**: Powered by [Oh My Zsh](https://ohmyz.sh/) with the `robbyrussell` theme baseline.
-* **Productivity Plugins**:
-  * `fast-syntax-highlighting` & `zsh-autosuggestions`
-  * `zoxide` – smarter directory navigation (`z`)
-  * `you-should-use` – reminders for existing aliases
-  * `git` & `sudo`
-* **Fuzzy Navigation**: Interactive fuzzy matching via `fzf` (`~/.fzf.zsh`).
-* **Runtime Managers**:
-  * **NVM** (Node Version Manager)
-  * **PNPM** package manager environment
-  * **SDKMAN** (Java / JVM manager)
-  * **Go** toolchain paths (`$HOME/.go/bin`, `$HOME/go/bin`)
+### 1. Starship Prompt (`starship.toml`)
+* **Theme**: [Catppuccin Powerline](https://starship.rs/presets/catppuccin-powerline) preset with coloured arrow segments for OS, user, directory, git, language runtimes and time.
+* **Two-line prompt**: `[line_break]` is enabled so commands are typed on a second line under the `❯` arrow.
+* **Requires**: [Starship](https://starship.rs/) and a Nerd Font (e.g. JetBrainsMono Nerd Font).
 
 ### 2. Herder / Herdr Terminal Multiplexer
 * **Agent Awareness**: Built specifically for modern multi-agent development, providing native tracking of AI agent states (*working*, *blocked*, *idle*, *done*) across active sessions.
@@ -65,28 +55,14 @@ This environment is augmented with agentic workflow skills used for planning, co
 
 ---
 
-## ⚡ Aliases & Quick Commands (`.bash_aliases`)
-
-Shared shell aliases loaded by Zsh:
-
-```bash
-alias cls='clear'
-
-# Headless AI agent shortcuts (OpenCode)
-alias opp='opencode run -c --auto -m openrouter/deepseek/deepseek-v4-flash-0731'
-alias opd='opencode run -c --auto -m opencode/deepseek-v4-flash-free'
-```
-
----
-
 ## 📂 Repository Structure
 
 ```text
 dotfiles/
 ├── .agents/
 │   └── skills/               # Reusable AI agent workflow skills
-├── .bash_aliases             # General shell & AI CLI aliases
-├── .zshrc                    # Main Zsh configuration, plugins & environment exports
+├── Bash/                     # Session cleanup scripts (Claude, Codex, Antigravity)
+├── starship.toml             # Starship prompt config (Catppuccin Powerline)
 ├── nvim/                     # Complete LazyVim / Neovim configuration
 │   ├── init.lua              # Neovim entry point
 │   ├── lazyvim.json          # LazyVim extra plugins & profile config
@@ -106,21 +82,15 @@ dotfiles/
 git clone https://github.com/oshanavishkapiries/dotfiles.git ~/Projects/dotfiles
 ```
 
-### 2. Configure ZShell
-Symlink or source the `.zshrc` and `.bash_aliases` in your home directory:
+### 2. Configure Starship
 ```bash
-ln -sf ~/Projects/dotfiles/.zshrc ~/.zshrc
-ln -sf ~/Projects/dotfiles/.bash_aliases ~/.bash_aliases
-```
-
-Make sure prerequisites are installed:
-```bash
-# Install Oh My Zsh
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-
 # Install Starship prompt
 curl -sS https://starship.rs/install.sh | sh
+
+# Link the config
+ln -sf ~/Projects/dotfiles/starship.toml ~/.config/starship.toml
 ```
+Add `eval "$(starship init zsh)"` to your `~/.zshrc` and set your terminal font to a Nerd Font.
 
 ### 3. Install & Launch Herder (Herdr)
 Install the Herdr terminal multiplexer:
