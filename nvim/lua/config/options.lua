@@ -27,3 +27,7 @@ if vim.env.SSH_TTY or vim.env.SSH_CONNECTION or vim.env.SSH_CLIENT then
     },
   }
 end
+
+-- Editing comfort
+vim.opt.scrolloff = 8 -- keep context lines around the cursor
+vim.opt.updatetime = 200 -- faster CursorHold / gitsigns blame
