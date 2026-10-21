@@ -21,7 +21,6 @@ return {
           end,
         },
         sections = {
-          { align = "center", text = { { "code · debug · ship", hl = "SnacksDashboardDesc" } }, padding = 2 },
           { section = "keys", gap = 1 },
         },
       },
