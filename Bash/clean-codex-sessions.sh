@@ -27,7 +27,7 @@ fi
 
 # Check if Codex process is running
 CODEX_RUNNING=0
-if pgrep -x "codex" >/dev/null 2>&1 || pgrep -f "codex" >/dev/null 2>&1; then
+if pgrep -x "codex" >/dev/null 2>&1; then
     CODEX_RUNNING=1
 fi
 
